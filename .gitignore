@@ -1,0 +1,26 @@
+### general ###
+*
+!**/
+!README.md
+!todo.md
+
+### git ###
+!/.git/.gitconfig
+!/.gitignore
+
+### prog ###
+
+### ignore ###
+*.pem
+*.key
+*.swp
+.DS_Store
+__pycache__/
+.idea/
+*.pyc
+.netrwhist
+*.JPG
+*.jpg
+*.jpeg
+*.png
+*.txt
