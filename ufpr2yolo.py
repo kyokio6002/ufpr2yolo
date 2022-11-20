@@ -162,7 +162,9 @@ def make_list_file(data_type, text_paths):
     file_path = BASE_DIR.joinpath(f'cfg/{data_type}.txt')
     with open(file_path, mode='w', encoding='utf_8') as f:
         for text_path in text_paths:
-            f.write(str(text_path)+'\n')
+            file_name = text_path.name
+            write_path = text_path.parent.parent.parent.joinpath(f'{data_type}/{file_name}')
+            f.write(str(write_path)+'\n')
 
 
 def main(ext='png'):
@@ -182,12 +184,11 @@ def main(ext='png'):
     count = 0
     for data_type, input_path in input_paths.items():
         track_dir_paths = input_path.glob('track*')
-        text_paths = []
+        write_image_paths = []
         for track_dir_path in track_dir_paths:
             image_paths = track_dir_path.glob(f'*.{ext}')
             for image_path in image_paths:
                 text_path = get_text_path(image_path, track_dir_path)
-                text_paths.append(text_path)
                 output_path = output_paths[data_type]
                 convert2yolo(
                     image_path,
@@ -200,7 +201,8 @@ def main(ext='png'):
                 all_ufpr_files = 4500
                 show_progress_bar(count, text_path, all_ufpr_files)
                 count += 1
-        make_list_file(data_type, text_paths)
+                write_image_paths.append(image_path)
+            make_list_file(data_type, write_image_paths)  # debag用にdir毎に書き込む
     write_class_txt(class_name_dict)
 
 
