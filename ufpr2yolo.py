@@ -139,7 +139,7 @@ def convert2yolo(input_image_path, input_text_path, input_path, output_path, cla
 
 
 def write_class_txt(class_name_dict):
-    class_name_file = BASE_DIR.joinpath('classes.name')
+    class_name_file = BASE_DIR.joinpath('cfg/classes.name')
     with open(class_name_file, mode='w', encoding='utf_8') as f:
         for key in class_name_dict:
             f.write(f'{key}\n')
