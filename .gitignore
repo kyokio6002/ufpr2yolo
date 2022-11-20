@@ -9,6 +9,7 @@
 !/.gitignore
 
 ### prog ###
+!/ufpr2yolo.py
 
 ### ignore ###
 *.pem
