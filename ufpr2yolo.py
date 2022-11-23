@@ -61,18 +61,23 @@ def return_list_from_ufpr_format(lines):
         if 'char' in key or key == 'position_plate':
             plate_list.append([key, value_list])
         elif key == 'plate':
-            plate = value_list[0]
+            plate = value_list[0]  # ex)ABC-1234
     return plate, plate_list
 
 
 def update_list_key(plate_chars, plate_list):
-    index = 1
-    update_plate_list = [['plate', plate_list[i][1]] for i in range(len(plate_list)) if plate_list[i][0] == 'position_plate']
-    for char in plate_chars:
-        if char == '-':
-            continue
-        update_plate_list.append([char, plate_list[index-1][1]])
-        index += 1
+    if plate_list[0][0] != 'position_plate':
+        print('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
+        print('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
+    update_plate_list = [['plate', plate_list[0][1]]]
+
+    # ex)ABC-1234->ABC1234
+    plate_chars = plate_chars.replace('-', '')
+
+    # ex) char 1->A, char 2->B
+    for index, char in enumerate(plate_chars):
+        print(plate_list[index+1][1])
+        update_plate_list.append([char, plate_list[index+1][1]])
     return update_plate_list
 
 
