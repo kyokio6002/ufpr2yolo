@@ -124,7 +124,9 @@ def convert2yolo(input_image_path, input_text_path, input_path, output_path, cla
             class_name = char_set[0]
             position_list = char_set[1]
             left, upper, right, bottom = get_location(position_list)
-            # show_rectangle(input_image_path, left, upper, right, bottom)  # debug
+            if debag and '[01].png' in input_image_path.name:
+                print(f'image_name:{input_image_path.name}')
+                show_rectangle(input_image_path, left, upper, right, bottom)
 
             if class_name not in class_name_dict:
                 class_name_dict[class_name] = len(class_name_dict)
