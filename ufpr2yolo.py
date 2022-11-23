@@ -67,8 +67,8 @@ def return_list_from_ufpr_format(lines):
 
 def update_list_key(plate_chars, plate_list):
     if plate_list[0][0] != 'position_plate':
-        print('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
-        print('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
+        print('we need sort') 
+        exit()
     update_plate_list = [['plate', plate_list[0][1]]]
 
     # ex)ABC-1234->ABC1234
@@ -76,7 +76,6 @@ def update_list_key(plate_chars, plate_list):
 
     # ex) char 1->A, char 2->B
     for index, char in enumerate(plate_chars):
-        print(plate_list[index+1][1])
         update_plate_list.append([char, plate_list[index+1][1]])
     return update_plate_list
 
