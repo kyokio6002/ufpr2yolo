@@ -110,7 +110,6 @@ def convert_location(input_image_path, left, upper, right, bottom):
 
 
 def convert2yolo(input_image_path, input_text_path, input_path, output_path, class_name_dict, debag=False):
-    '''???'''
     with open(input_text_path, mode='r', encoding='utf_8') as f:
         lines = f.readlines()
         plate, plate_list = return_list_from_ufpr_format(lines)
