@@ -1,12 +1,11 @@
 '''convert AOSP to YOLO'''
-from pathlib import Path
-import random
 import shutil
-
+from pathlib import Path
 from pprint import pprint
 
-import cv2
 from PIL import Image, ImageDraw
+
+import cv2
 
 
 BASE_DIR = Path(__file__).resolve().parent
